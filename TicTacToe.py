@@ -49,25 +49,25 @@ def restart():
     btn7.config(state = NORMAL)
     btn8.config(state = NORMAL)
     btn9.config(state = NORMAL)
-    btn1["text"]=" "
-    btn2["text"]=" "
-    btn3["text"]=" "
-    btn4["text"]=" "
-    btn5["text"]=" "
-    btn6["text"]=" "
-    btn7["text"]=" "
-    btn8["text"]=" "
-    btn9["text"]=" "
+    btn1["text"]=""
+    btn2["text"]=""
+    btn3["text"]=""
+    btn4["text"]=""
+    btn5["text"]=""
+    btn6["text"]=""
+    btn7["text"]=""
+    btn8["text"]=""
+    btn9["text"]=""
     return 
 
 def btnClick(button):
     global speletajsX, count
-    if button["text"] == " " and speletajsX == True:
+    if button["text"] == "" and speletajsX == True:
         button["text"] = "X"
         speletajsX = False
         count += 1
         checkWinner()
-    elif button["text"] == " " and speletajsX == False:
+    elif button["text"] == "" and speletajsX == False:
         button["text"] = "O"
         speletajsX = True
         count += 1
@@ -92,7 +92,7 @@ def checkWinner():
         disableButtons()
     return
 
-btn1=Button(mansLogs, text="", width=6, height=3, font=("Helvica,24"), command=lambda:btnClick(btn1), bd=10, bg="#97BFB4") #definē pogas
+btn1=Button(mansLogs, text="", width=6, height=3, font=("Helvica,24"), command=lambda:btnClick (btn1), bd=10, bg="#97BFB4") #definē pogas
 btn2=Button(mansLogs, text="", width=6, height=3, font=("Helvica,24"), command=lambda:btnClick(btn2), bd=10, bg="#97BFB4")
 btn3=Button(mansLogs, text="", width=6, height=3, font=("Helvica,24"), command=lambda:btnClick(btn3), bd=10, bg="#97BFB4")
 btn4=Button(mansLogs, text="", width=6, height=3, font=("Helvica,24"), command=lambda:btnClick(btn4), bd=10, bg="#97BFB4")
