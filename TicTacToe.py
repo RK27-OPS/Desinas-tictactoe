@@ -93,14 +93,14 @@ def checkWinner():
     return
 
 btn1=Button(mansLogs, text="", width=6, height=3, font=("Helvica,24"), command=lambda:btnClick(btn1), bd=10, bg="#97BFB4") #definē pogas
-btn2=Button(mansLogs, text="", width=6, height=3, font=("Helvica,24"), command=lambda:btnClick(btn1), bd=10, bg="#97BFB4")
-btn3=Button(mansLogs, text="", width=6, height=3, font=("Helvica,24"), command=lambda:btnClick(btn1), bd=10, bg="#97BFB4")
-btn4=Button(mansLogs, text="", width=6, height=3, font=("Helvica,24"), command=lambda:btnClick(btn1), bd=10, bg="#97BFB4")
-btn5=Button(mansLogs, text="", width=6, height=3, font=("Helvica,24"), command=lambda:btnClick(btn1), bd=10, bg="#97BFB4")
-btn6=Button(mansLogs, text="", width=6, height=3, font=("Helvica,24"), command=lambda:btnClick(btn1), bd=10, bg="#97BFB4")
-btn7=Button(mansLogs, text="", width=6, height=3, font=("Helvica,24"), command=lambda:btnClick(btn1), bd=10, bg="#97BFB4")
-btn8=Button(mansLogs, text="", width=6, height=3, font=("Helvica,24"), command=lambda:btnClick(btn1), bd=10, bg="#97BFB4")
-btn9=Button(mansLogs, text="", width=6, height=3, font=("Helvica,24"), command=lambda:btnClick(btn1), bd=10, bg="#97BFB4")
+btn2=Button(mansLogs, text="", width=6, height=3, font=("Helvica,24"), command=lambda:btnClick(btn2), bd=10, bg="#97BFB4")
+btn3=Button(mansLogs, text="", width=6, height=3, font=("Helvica,24"), command=lambda:btnClick(btn3), bd=10, bg="#97BFB4")
+btn4=Button(mansLogs, text="", width=6, height=3, font=("Helvica,24"), command=lambda:btnClick(btn4), bd=10, bg="#97BFB4")
+btn5=Button(mansLogs, text="", width=6, height=3, font=("Helvica,24"), command=lambda:btnClick(btn5), bd=10, bg="#97BFB4")
+btn6=Button(mansLogs, text="", width=6, height=3, font=("Helvica,24"), command=lambda:btnClick(btn6), bd=10, bg="#97BFB4")
+btn7=Button(mansLogs, text="", width=6, height=3, font=("Helvica,24"), command=lambda:btnClick(btn7), bd=10, bg="#97BFB4")
+btn8=Button(mansLogs, text="", width=6, height=3, font=("Helvica,24"), command=lambda:btnClick(btn8), bd=10, bg="#97BFB4")
+btn9=Button(mansLogs, text="", width=6, height=3, font=("Helvica,24"), command=lambda:btnClick(btn9), bd=10, bg="#97BFB4")
 
 galvenaIzvelne=Menu(mansLogs)
 mansLogs.config(menu=galvenaIzvelne)
