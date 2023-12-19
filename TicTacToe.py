@@ -1,42 +1,54 @@
-from itertools import count
 from tkinter import *
 from tkinter import messagebox #paziņojumi
 mansLogs=Tk()#loga objekts
 mansLogs.title("TicTacToe")
-speletajsX = True
+global winner, speletajsX, count
 count=0
+speletajsX=True
+winner=False
+
+def disableButtons():
+    btn1.config(state=DISABLED)
+    btn2.config(state=DISABLED)
+    btn3.config(state=DISABLED)
+    btn4.config(state=DISABLED)
+    btn5.config(state=DISABLED)
+    btn6.config(state=DISABLED)
+    btn7.config(state=DISABLED)
+    btn8.config(state=DISABLED)
+    btn9.config(state=DISABLED)
+    return 
 
 def infoLogs():
     jaunsLogs=Toplevel()
-    jaunsLogs.title('Info par programmu')
-    jaunsLogs.geometry("400x400")
-    apraksts=Label(jaunsLogs,text='Spēles noteikumi: Spēlētāju uzdevums ir panākt, ka viņa simbols (o) atrodas vienā līnijā vertikāli, horizontāli vai pa diagonāli, reizē neļaujot otram spēlētājam vienā līnijā izkārtot savu simbolu (x). Tas, kurš pirmais salicis vienā līnijā savu simbolu, ir uzvarētājs. Ja nevienam spēlētājam neizdodas izvietot savus simbolus vienā līnijā, bet visi lodziņi aizņemti, ir neizšķirts rezultāts.')
+    jaunsLogs.title("Info par programmu")
+    jaunsLogs.geometry("1100x565")
+    apraksts=Label(jaunsLogs,text="Spele piedalas 2 speletaji: viens spele ar X simbolu un otrs ar 0 simbolu.", font="Helvica 16", bg="#97BFB4")
     apraksts.grid(row=0,column=0)
-    return 0
+    apraksts=Label(jaunsLogs,text="Gajienus veic pamišus, sakot ar X speletaju. Gajienu drikst veikt tikai tukšajos laucinos.", font="Helvica 16", bg="#97BFB4")
+    apraksts.grid(row=1,column=0)
+    apraksts=Label(jaunsLogs,text="Sakotneji laukumu veido 9 tukši laucini, izkartoti 3x3 formata.", font="Helvica 16", bg="#97BFB4")
+    apraksts.grid(row=2,column=0)
+    apraksts=Label(jaunsLogs,text="Speles merkis ir novietot 3 savus simbolus kolonna, rinda vai pa diognali.", font="Helvica 16", bg="#97BFB4")
+    apraksts.grid(row=3,column=0)
+    apraksts=Label(jaunsLogs,text="Ja laukums ir aizpildits un neviens no speletajiem nav sasniedzis speles merki, spele beidzas ar neizškirtu rezultatu.", font="Helvica 16", bg="#97BFB4")
+    apraksts.grid(row=4,column=0)
+    return 
 
 def restart():
     global winner, count, speletajsX
     winner=False
     count=0
     speletajsX=True
-    return 0
-
-galvenaIzvelne=Menu(mansLogs)
-mansLogs.config(menu=galvenaIzvelne)
-opcijas=Menu(galvenaIzvelne,tearoff=False)
-galvenaIzvelne.add_cascade(label="Opcijas",menu=opcijas)
-galvenaIzvelne.add_command(label="Par programmu",command=infoLogs) 
-
-def reset():
-    btn1.config(state=NORMAL)
-    btn2.config(state=NORMAL)
-    btn3.config(state=NORMAL)
-    btn4.config(state=NORMAL)
-    btn5.config(state=NORMAL)
-    btn6.config(state=NORMAL)
-    btn7.config(state=NORMAL)
-    btn8.config(state=NORMAL)
-    btn9.config(state=NORMAL)
+    btn1.config(state = NORMAL)
+    btn2.config(state = NORMAL)
+    btn3.config(state = NORMAL)
+    btn4.config(state = NORMAL)
+    btn5.config(state = NORMAL)
+    btn6.config(state = NORMAL)
+    btn7.config(state = NORMAL)
+    btn8.config(state = NORMAL)
+    btn9.config(state = NORMAL)
     btn1["text"]=" "
     btn2["text"]=" "
     btn3["text"]=" "
@@ -46,17 +58,14 @@ def reset():
     btn7["text"]=" "
     btn8["text"]=" "
     btn9["text"]=" "
-    return 0
+    return 
 
-opcijas.add_command(label="Jauna spēle",command=reset)
-opcijas.add_command(label="Iziet",command=mansLogs.quit)
-
-def btnClick(button):#padod visu pugu
-    global speletajsX, count#kādi mainīgie tiks izmantoti visā programā
-    if button["text"] == " " and speletajsX == True:#spēlē X spēlētājs
-        button["text"] = "X"#maina uz X
+def btnClick(button):
+    global speletajsX, count
+    if button["text"] == " " and speletajsX == True:
+        button["text"] = "X"
         speletajsX = False
-        count += 1 #palielina rūtiņu uz citu
+        count += 1
         checkWinner()
     elif button["text"] == " " and speletajsX == False:
         button["text"] = "O"
@@ -65,39 +74,7 @@ def btnClick(button):#padod visu pugu
         checkWinner()
     else:
         messagebox.showerror("TicTacToe", "Šeit kāds ir ieklikšķinājis")
-    return 0     
-
-btn1=Button(mansLogs, text="", width=6, height=3, font=("Helvica,24"), command = lambda: btnClick(btn1), bd = 10, bg = "#97BFB4") #definē pogas
-btn2=Button(mansLogs, text="", width=6, height=3, font=("Helvica,24"), command = lambda: btnClick(btn1), bd = 10, bg = "#97BFB4")
-btn3=Button(mansLogs, text="", width=6, height=3, font=("Helvica,24"), command = lambda: btnClick(btn1), bd = 10, bg = "#97BFB4")
-btn4=Button(mansLogs, text="", width=6, height=3, font=("Helvica,24"), command = lambda: btnClick(btn1), bd = 10, bg = "#97BFB4")
-btn5=Button(mansLogs, text="", width=6, height=3, font=("Helvica,24"), command = lambda: btnClick(btn1), bd = 10, bg = "#97BFB4")
-btn6=Button(mansLogs, text="", width=6, height=3, font=("Helvica,24"), command = lambda: btnClick(btn1), bd = 10, bg = "#97BFB4")
-btn7=Button(mansLogs, text="", width=6, height=3, font=("Helvica,24"), command = lambda: btnClick(btn1), bd = 10, bg = "#97BFB4")
-btn8=Button(mansLogs, text="", width=6, height=3, font=("Helvica,24"), command = lambda: btnClick(btn1), bd = 10, bg = "#97BFB4")
-btn9=Button(mansLogs, text="", width=6, height=3, font=("Helvica,24"), command = lambda: btnClick(btn1), bd = 10, bg = "#97BFB4")
-
-btn1.grid(row=0, column=0) #pievieno pogas
-btn2.grid(row=0, column=1)
-btn3.grid(row=0, column=2)
-btn4.grid(row=1, column=0)
-btn5.grid(row=1, column=1)
-btn6.grid(row=1, column=2)
-btn7.grid(row=2, column=0)
-btn8.grid(row=2, column=1)
-btn9.grid(row=2, column=2)
-
-def disableButtons():
-    btn1.config(state = DISABLED)
-    btn2.config(state = DISABLED)
-    btn3.config(state = DISABLED)
-    btn4.config(state = DISABLED)
-    btn5.config(state = DISABLED)
-    btn6.config(state = DISABLED)
-    btn7.config(state = DISABLED)
-    btn8.config(state = DISABLED)
-    btn9.config(state = DISABLED)
-    return 0
+    return 
 
 def checkWinner():
     global winner
@@ -113,6 +90,41 @@ def checkWinner():
     elif count == 9 and winner == False:
         messagebox.showinfo("TicTacToe", "Neizšķirts")
         disableButtons()
+    return
+
+btn1=Button(mansLogs, text="", width=6, height=3, font=("Helvica,24"), command=lambda:btnClick(btn1), bd=10, bg="#97BFB4") #definē pogas
+btn2=Button(mansLogs, text="", width=6, height=3, font=("Helvica,24"), command=lambda:btnClick(btn1), bd=10, bg="#97BFB4")
+btn3=Button(mansLogs, text="", width=6, height=3, font=("Helvica,24"), command=lambda:btnClick(btn1), bd=10, bg="#97BFB4")
+btn4=Button(mansLogs, text="", width=6, height=3, font=("Helvica,24"), command=lambda:btnClick(btn1), bd=10, bg="#97BFB4")
+btn5=Button(mansLogs, text="", width=6, height=3, font=("Helvica,24"), command=lambda:btnClick(btn1), bd=10, bg="#97BFB4")
+btn6=Button(mansLogs, text="", width=6, height=3, font=("Helvica,24"), command=lambda:btnClick(btn1), bd=10, bg="#97BFB4")
+btn7=Button(mansLogs, text="", width=6, height=3, font=("Helvica,24"), command=lambda:btnClick(btn1), bd=10, bg="#97BFB4")
+btn8=Button(mansLogs, text="", width=6, height=3, font=("Helvica,24"), command=lambda:btnClick(btn1), bd=10, bg="#97BFB4")
+btn9=Button(mansLogs, text="", width=6, height=3, font=("Helvica,24"), command=lambda:btnClick(btn1), bd=10, bg="#97BFB4")
+
+galvenaIzvelne=Menu(mansLogs)
+mansLogs.config(menu=galvenaIzvelne)
+opcijas=Menu(galvenaIzvelne, tearoff=False)
+galvenaIzvelne.add_cascade(label="Opcijas", menu=opcijas)
+galvenaIzvelne.add_command(label="Par programmu", command=infoLogs) 
+
+opcijas.add_command(label="Jauna spēle", command=restart)
+opcijas.add_command(label="Iziet", command=mansLogs.quit)
+
+btn1.grid(row=0, column=0) #pievieno pogas
+btn2.grid(row=0, column=1)
+btn3.grid(row=0, column=2)
+btn4.grid(row=1, column=0)
+btn5.grid(row=1, column=1)
+btn6.grid(row=1, column=2)
+btn7.grid(row=2, column=0)
+btn8.grid(row=2, column=1)
+btn9.grid(row=2, column=2)
+
+
+
+
+
 
 
 
